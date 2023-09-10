@@ -8,8 +8,8 @@ import cors from 'cors';
 console.log(process.env.PORT)
 console.log(process.env.URI)
 
-const url = process.env.URI;
-const port = process.env.PORT
+const URI = process.env.URI;
+const PORT = process.env.PORT
 const app = express();
 
 app.use(express.json());
@@ -33,11 +33,11 @@ app.get('/', (request, response) => {
 app.use('/books', booksRoute);
 
 mongoose
-  .connect(url)
+  .connect(URI)
   .then(() => {
     console.log('App connected to database');
-    app.listen(port, () => {
-      console.log(`App is listening to port: ${port}`);
+    app.listen(PORT, () => {
+      console.log(`App is listening to port: ${PORT}`);
     });
   })
   .catch((error) => {
